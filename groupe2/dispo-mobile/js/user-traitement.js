@@ -4,16 +4,17 @@ var paul = new Utilisateur();
 var jacqueLembrouille = new Utilisateur();
 var levrette = new Administrateur();
 
-paul.hydrate(jsonPaul);
-jacqueLembrouille.hydrate(jsonJacqueLembrouille);
-levrette.hydrate(jsonLevrette);
+// paul.hydrate(jsonPaul);
+// jacqueLembrouille.hydrate(jsonJacqueLembrouille);
+// levrette.hydrate(jsonLevrette);
 
 $(document).ready(function() {
 
-	var $btnEnvoie = $('#btn-user-send');
-	$btnEnvoie.click(userFormEnvoie);
+	//var $btnEnvoie = $('#btn-user-send');
+	//$btnEnvoie.click(userFormEnvoie);
 	//console.log("OLA");
-	afficherDataUser(levrette)
+	//afficherDataUser(levrette)
+	getUtilisateurs();
 
 });
 
@@ -23,6 +24,14 @@ function userFormEnvoie()
 //var lePrenom = document.formNomPrenom.prenom.value ;
  
 //alert("Votre nom est: " + leNom + "\n" + "Votre prénom est: " + lePrenom + ".") ;
+}
+
+function getUtilisateurs()
+{
+	$.getJSON('utilisateurs.json',function(data){
+  		// Une ou plusieurs instructions pour traiter les données lues
+  		console.log(data);
+	});
 }
 
 function afficherDataUser(utilisateur_obj)
