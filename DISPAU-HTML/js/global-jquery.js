@@ -15,7 +15,7 @@ jQuery(document).ready(function() {
 		if ( jQuery(this).hasClass('recherche-lieu') ) {
 			jQuery(this).parent('aside').toggleClass('masked');
 		} else {
-			// ... Et toutes les autres
+			// ... Et toutes les autres : necessite un attribut 'data-cible' avec l'ID de l'element HTML
 			var cible = $(this).attr('data-cible');
 			(cible != null) ? jQuery('#'+cible).toggleClass('visible') : '';
 		}
@@ -23,7 +23,8 @@ jQuery(document).ready(function() {
 
 	// Ecouteur pour la fermeture des fenetres modales
 	jQuery('.close').on('click', function(e) {
-		e.preventDefault;
+		e.preventDefault();
+		// Bascule la classe 'visible' des elements div proche du lien
 		jQuery(this).closest('div').toggleClass('visible');
 	});
 
