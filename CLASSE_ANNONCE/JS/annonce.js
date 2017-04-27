@@ -258,7 +258,7 @@ this.modifierNbPersonnes=function(personnesMax_nb,personnesMin_nb)
 
      if ((personnesMin_nb != -1 && personnesMax_nb != -1) && personnesMin_nb > personnesMax_nb)
      {
-     	var err15 = new Erreur();
+     	var err15= new Erreur;
 		err15.code = 1015;
 		err15.msg = 'Nombre de personnes Min superieur au nombre de personnes Max'
 		return err15;
