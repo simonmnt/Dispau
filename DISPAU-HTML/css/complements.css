@@ -1,0 +1,113 @@
+@charset "UTF-8";
+/** 
+ * Feuille de styles des elements dynamiques (on verra plus tard quoi en faire)
+ * Version de développement. 
+ * Prévoir une version finale minifiée pour plus de vélocité (voir : http://www.minifier.org/)
+ *
+ * @name 	 complements.css
+ * @date 	 21/04/2017
+ * @revision 
+ *
+ */
+
+img {
+	display: block;
+	width: 100%;
+	height: auto;
+	vertical-align: top;
+	text-align: center
+}
+
+aside {
+    float: right;
+    display: block;
+    position: relative;
+    z-index: 2;
+    bottom: -3.5em;
+    bottom: -8vh;
+    right: 1.5em;
+    width: 400px;
+    height: 400px;
+    max-height: 400px;
+    /* Fallback */
+    background: #fff;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 15px rgba(0,0,0,.5);
+    transition-property: all;
+    transition-duration: .5s;
+    transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+#recherche-lieu {
+    position: absolute;
+    z-index: 1;
+    bottom: 60px;
+    right: 3em;
+    width: 19em;
+    max-height: 23em;
+    padding: 0 1em;
+    /* Fallback */
+    background: #fff;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.3);
+}
+
+#div-lieu,
+	#creer-lieu {
+	clear: both;
+	position: relative;
+	z-index: 100;
+	top: -5em;
+	left: 50%;
+	height: auto;
+
+	max-height: 480px;
+	margin-left: -25%; /* 25% + 4% (margins) */ 
+	background: rgba(255, 255, 255, 0.9);
+	overflow-y: scroll
+}
+
+#titre-lieu {
+	width: 100%;
+	text-align: center
+}
+
+#div-lieu img {
+	/*
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	*/
+	display: table;
+	width: auto;
+	margin: 0 auto
+}
+
+#div-lieu p {padding: 0 1em}
+
+#creer-lieu form {
+	width: 96%;
+	margin: 0 2%
+}
+
+.close {
+    position: absolute;
+    top: .2em;
+    right: .5em;
+    width: 1.5em;
+    height: 1.5em;
+    background: #eee;
+    border-radius: 50%;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    color: #999;
+    font: normal normal normal 1.3em/1.5em Arial,sans-serif;
+    outline: none;
+}
+
+.close:hover {
+	background: #fff;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3)
+}

@@ -1,0 +1,718 @@
+@charset "UTF-8";
+/**
+ * Feuille de styles globale DISPAU version web
+ * Version de développement. 
+ * Prévoir une version finale minifiée pour plus de vélocité (voir : http://www.minifier.org/)
+ *
+ * @name 	 global.css
+ * @date 	 20/04/2017
+ * @revision 21/04/2017
+ *
+ */
+/* Chargement des @font-face en premier pour optimisation */
+@import url('font-awesome.min.css');
+/* importation de Normalize v6.0.0 */
+@import url('normalize.min.css');
+
+/*!
+ * ====== SOMMAIRE ======
+ *
+ * 1°.  Micro resets
+ * 2°.  Helpers
+ * 3°.  Typos
+ * 4°.  Couleurs
+ * 5°.  Layout
+ * 6°.  Google Maps
+ * 7°.  Menu general de navigation
+ * 8°.  Systeme de Grilles
+ * 9°.  Formulaires
+ * 10°. Animations
+ * 11°. WTF?
+ * 12°. Media Queries
+ *
+ */
+
+/* 1°) Micro resets 
+	============ */
+html,
+	body {
+	height: 100%;
+	margin: 0;
+	padding: 0
+}
+
+/* A supprimer si Flexbox n'est pas requis */
+body {
+/* Necessaire pour les effets sur le block slide up/down */
+	overflow-y: hidden;
+	display: flex;
+	min-height: 100%;
+	min-height: 100vh;
+	flex-direction: column;
+	margin: 0;
+	padding: 0;
+	font: normal normal normal 100%/1 sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility
+}
+/* Fin de l'usage de Flexbox */
+
+/*! 2°) Helpers 
+	================ */
+
+.fixed {position: fixed}
+.static {position: static}
+.relative {position: relative}
+.absolute {position: absolute}
+.left {float: left}
+.right {float: right}
+.hidden {
+	display: none;
+	width: 0;
+	margin: 0;
+	padding: 0
+}
+.indent {
+	overflow: hidden;
+	text-indent: 100%;
+	white-space: nowrap;
+	font-size: 0
+}
+.mt5 {margin-top: 5em}
+.txt-center{text-align: center}
+.txt-right{text-align: right}
+.cf:before,
+	.cf:after {
+	content: " ";
+	display: table
+}
+.cf:after {clear: both}
+.cf {*zoom: 1}
+
+/*! 3°) Typos 
+	================ */
+h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+
+}
+
+p {
+	line-height: 1.3;
+	hyphens: auto
+}
+/*! A) Masque les icones Fontawsome non encore chargees pour affichage du fallback */
+
+html:not(.wf-active) .fa {display: none}
+
+/*! Fallbacks de Fontawsome */
+.social em {font-style: normal}
+
+/* B) Google fonts chargees */
+
+/* Masque les alternatives textuelles sur les icones sociales */
+.wf-active .social em {display: none}
+
+.wf-active h1,
+	.wf-active h2,
+	.wf-active h3 {
+
+}
+
+.top-menu {font-size: 75%}
+
+.button-large {
+	font-size: 1.15em
+	line-height: 1
+}
+
+.social .fa {
+	font-size: 1.8em;
+	line-height: 1
+}
+
+
+/*! 4°) Couleurs
+
+		Rouge :      #e6005c
+		Bleu :       #7ac9ed		rgb(122, 201, 237)
+		Bleu vert :  #dff4f3
+		Bistre :     #95405a		rgb(149, 64, 90)
+		Orange :     #ef6c00
+		Vert   :     #00897b
+		Blanc :      #fff			rgb(255, 255, 255)
+		Noir :       #000			rgb(0, 0, 0)
+
+	================ */
+
+header {
+	/* Fallback */
+	background: #7ac9ed;
+	background: rgba(122, 201, 237, 0.7)
+}
+
+header .mask {background: #7ac9ed}
+
+header h1 a {color: #e6005c}
+
+footer {
+	/* Fallback */
+	background: #95405a;
+	background: rgba(149, 64, 90, 0.85);
+	color: #fff
+}
+
+.footer-inner a {color: #fff}
+
+.social .fa {color: #000}
+
+.button {
+	background: #fff;
+	border: 3px solid #f0f8ff
+}
+
+.btn,
+	.btn-large {
+		background-color: #26a69a;
+		color: #fff
+}
+
+.btn,
+	.btn-flat {
+ 	color: #333;
+ 	box-shadow: 0 0 3px rgba(0, 0, 0, 0.3)
+ }
+
+.btn-large {
+ 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+ 				0 1px 5px 0 rgba(0, 0, 0, 0.12),
+ 				0 3px 1px -2px rgba(0, 0, 0, 0.2)
+}
+
+.button-orange {
+	background: #ef6c00;
+	color: #fff
+}
+
+.button-green {
+	background: #00897b;
+	color: #fff
+}
+
+input:focus {border-bottom: 1px solid #333}
+
+select {
+ 	/* Fallback */
+ 	color: #000;
+ 	color:rgba(0, 0, 0, 0.7);
+	background-color: #dff4f3
+ }
+
+
+/*! 5°) Layout 
+	================ */
+
+.container {
+	display: table;
+	width: 100%;
+	min-width: 586px;
+	height: 100%
+}
+
+.wrapper,
+	.header-inner,
+	.footer-inner {
+	position: relative;
+	max-width: 1280px;
+	min-height: 1px;
+	margin: 0 auto
+}
+
+.wrapper {
+	/* Usage de Flexbox (peut etre supprime sans probleme majeur ) */
+	flex: 1;
+	/* Tous les contextes : ajoute un espace avant le 'footer' 
+	padding-bottom: 3em
+	*/
+}
+
+header {
+	position: relative;
+	z-index: 2;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 5.7em
+}
+
+/* Bloc opaque sur partie gauche du logo */
+header .mask {
+	display: block;
+	top: 0;
+	left: 0;
+	width: 3%;
+	min-width: 46px;
+	height: 5.6em
+}
+
+/* Positionnement du masque pour les écrans > 1280px */
+@media only screen and (min-width: 1280px) {
+
+	header .mask {width: calc(((100% - 1280px) / 2) + 46px)}
+
+}
+
+header h1 {
+	width: 4em;
+	margin: .85em 0 0
+}
+
+header h1 a {text-decoration: none}
+
+header .logo {width: auto}
+
+/* Le logo deborde la barre du header */
+.header-inner {height: 5.7em}
+
+main {
+	display: table;
+	clear: both;
+	max-width: 1280px;
+	min-height: 1px;
+	height: calc(100% - 5.7em);
+	margin: 0 auto
+}
+
+/* Necessaire pour le positionnement en 'Sticky Footer' */
+.push {
+	clear: both;
+	width: 100%;
+	height: auto
+}
+
+/* Footer */
+
+footer {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0
+}
+
+.footer-inner p {
+	padding: .5em 2em 0;
+	font-size: 1.1em;
+	line-height: 1.4
+}
+
+/*! 6°) Google Maps
+	============ */
+
+#map {
+	position: absolute;
+	z-index: 0;
+	top: 0;
+	left: 0;
+	width: 100%;
+	min-width: 586px;
+	/* Fallback */
+	height: 430px;
+	height: calc(100vh - 75px)
+}
+
+/* Masque certains affichages propres a Google Map	*/
+a[href^="https://maps.google.com/maps?"],
+	a[href^="https://www.google.com/intl/fr_US/help/terms_maps.html"] {
+	 display: none!important
+}
+
+/*! Menu navigation 
+	================ */
+
+.top-menu {
+	float: right;
+	width: auto;
+	min-width: 450px /* 395px */;
+	max-width: 45em;
+	margin: .5em 0 0 0
+}
+
+.top-menu ul {
+	display: block;
+	float: right;
+	margin: .8em 0 0;
+	padding: 0;
+	list-style: none
+}
+
+.top-menu li {
+	display: inline;
+	float: left;
+	padding: 0 .5em;
+	line-height: 2.9
+}
+
+/* Système de grilles ================
+*/
+.c-1,
+	.c-2,
+	.c-3,
+	.c-4,
+	.c-5,
+	.c-6 {
+	float: left;
+	*display: inline;
+	min-height: 1px;
+	margin-right: 2%;
+	margin-left: 2%
+}
+
+.c-1 {
+	width: 100%;
+	margin: 0 0 0 0
+}
+
+.c-2 {
+	/* 50% - 4% (marges) */ 
+	width: 46%
+}
+
+.c-3 {
+	/* 33.333334% - 4% (marges) */
+	width: 29.333334%
+
+}
+
+.c-4 {
+	/* 25% - 4% (marges) */
+	width: 21%
+}
+
+.c-5 {
+	/* 20% - 4% (marges) */
+	width: 16%
+}
+
+
+/* Si, en usage, la meilleure base actuelle pour le support de Flexbox */
+[class^="c-"] {
+	display: inline;
+	display: box;
+	display: flexbox;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: stretch;
+	justify-content: space-between;
+	-webkit-flex-flow: row wrap;
+	flex-flow: row wrap;
+	align-items: flex-start;
+	align-content: flex-start;
+	flex-grow: 1
+}
+
+/* Support du nouveau système de grilles 'CSS Grid Layout' */
+
+@supports (display:grid) {
+
+	/* Exemples d'usages :
+
+	[class^="grid-"] {
+		display:grid
+	}
+	[class^="grid-"] div {
+		flex:none;
+		float:none;
+		width:auto;
+		margin:0
+	}
+	.container .grid-4 {
+		grid-template-columns:calc((100% / 4) - 10px) calc((100% / 4) - 10px) calc((100% / 4) - 10px) calc((100% / 4) - 10px);
+		grid-gap:13px
+	}
+	.grid-3 {
+		grid-template-columns:calc((100% / 3) - 10px) calc((100% / 3) - 10px) calc((100% / 3) - 10px);
+		grid-gap:15px
+	}
+	.grid-2 {
+		grid-template-columns:calc((100% / 2) - 10px) calc((100% / 2) - 10px);
+		grid-gap:20px
+	}
+
+	*/
+
+}
+
+/*! Modal 
+	============ */
+
+#connexion,
+	#inscription {
+		display: none;
+		position: absolute;
+		z-index: 10;
+		top: 5em;
+		width: 19em;
+		height: 23em;
+		padding: 0 1em;
+		background: rgba(255,255,255,.9);
+		background: #fff;
+		box-shadow: 0 0 35px rgba(0,0,0,.3);
+}
+#connexion.visible,
+	#inscription.visible {display: block}
+
+#connexion:before,
+	#inscription:before {
+		content: '▲';
+		position: absolute;
+		top: -20px;
+		left: 50%;
+		margin-left: -10px;
+		color: #fff;
+		font-size: 25px
+}
+#connexion:before {left: 50%}
+
+#inscription {
+	right: 8%;
+	height: 31em
+}
+
+#connexion {
+	right: 18%;
+	height: 15em}
+
+#connexion form,
+	#inscription form {margin-top: 1.5em}
+
+#connexion .button {margin-top: 1.5em}
+
+/* Recentrage des 2 blocs pour écrans > 1275px */
+@media only screen and (max-width: 1275px) {
+
+	#inscription {right: 4.5rem}
+	#connexion {right: 13rem}
+
+}
+
+#recherche-lieu {
+	position: absolute;
+	z-index: 1;
+	bottom: 60px;
+	right: 3em;
+	width: 19em;
+	max-height: 23em;
+	padding: 0 1em;
+	background: #fff;
+	background: rgba(255,255,255,.7);
+	box-shadow: 0 0 35px rgba(0,0,0,.3)
+}
+
+#recherche-lieu button {margin-top: 1em}
+
+/* Position par défaut hors effet d'animation */
+#recherche-lieu.masked {
+    overflow: hidden;
+    bottom: 0;
+    max-height: 50px
+}
+
+/* Icône de fermeture des modales */
+.close {
+  position: absolute;
+  top: .2em;
+  right: .5em;
+  width: 1.5em;
+  height: 1.5em;
+  background: #eee;
+  border-radius: 50%;
+  vertical-align: middle;
+  text-align: center;
+  text-decoration: none;
+  color: #999;
+  font: normal normal normal 1.3em/1.5em Arial,sans-serif;
+  outline: none
+}
+
+.close:hover {background:#fff;box-shadow:0 0 10px rgba(0,0,0,.3)}
+
+
+/*! 9°) Formulaires 
+	============ */
+
+label {display: block}
+
+.input-txt,
+	input[type="text"],
+	input[type="email"],
+	input[type="password"],
+	textarea,
+	select {
+	min-width:100%;
+	max-width:100%;
+	margin:.3em 0;
+	padding:.25em .2em;
+	padding:.3vh .2vh;
+	border-color:transparent;
+	border-bottom:1px solid #eee;
+	background-color:#dff4f3;
+	text-transform:none;
+	font-size:larger;
+	font-weight:500;
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	appearance:none;
+	outline:none
+}
+
+select {
+	min-width:101.5%;
+	/* Substitution et homogeneisation des fleches deroulantes */
+	background-image:url("data:image/png;base64,R0lGODlhDwAUAIABAAAAAP///yH5BAEAAAEALAAAAAAPABQAAAIXjI+py+0Po5wH2HsXzmw//lHiSJZmUAAAOw==");
+	background-repeat:no-repeat;
+	background-position:100% 50%;
+	background-position:calc(100% - .5em) 50%;
+	text-indent:0.01px;
+	font-size: inherit
+}
+
+select::-ms-expand {display:none}
+
+/* Boutons */
+
+.button {
+	padding: 0 1em;
+	cursor: pointer
+}
+
+.button-large {
+	display: table;
+	margin: 0 auto;
+	text-decoration: none
+}
+
+.btn,
+	.btn-large {
+		text-decoration: none;
+		text-align: center;
+		letter-spacing: .5px;
+		transition: .2s ease-out;
+		cursor: pointer;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		-webkit-tap-highlight-color: transparent
+}
+
+.btn,
+	.btn-flat {
+		border: none;
+		border-radius: 2px;
+		display: inline-block;
+		height: 26px;
+		line-height: 26px;
+		padding: .5rem 1.5rem;
+		text-transform: uppercase;
+		text-decoration: none;
+		vertical-align: middle;
+		outline: none
+}
+
+.btn-large {
+		height: 54px;
+		line-height: 54px
+}
+
+button.button {
+	display: table;
+	height: auto;
+	margin: .5em auto;
+	cursor: pointer
+}
+
+.btn-link {
+	padding: .5rem .9em .5rem;
+	background: #fff
+}
+
+/*! 10°) Animations
+	============ */
+
+body {animation: all 500ms}
+
+#recherche-lieu {
+	transition-property: all;
+	transition-duration: .5s;
+	transition-timing-function: cubic-bezier(0, 1, 0.5, 1)
+}
+
+.show {
+	opacity:0;
+	-webkit-animation:reveal .5s ease 2.5s;
+	-webkit-animation-fill-mode:forwards;
+	-moz-animation:reveal .5s ease 2.5s;
+	-moz-animation-fill-mode:forwards;
+	animation:reveal .5s ease 2.5s;
+	animation-fill-mode:forwards
+}
+
+@-webkit-keyframes reveal {
+	from {
+		opacity:0
+	}
+	to {
+		opacity:1
+	}
+}
+
+@keyframes reveal {
+	from {
+		opacity:0
+	}
+	to {
+		opacity:1
+	}
+}
+
+/* 11°) WTF
+	============ */
+
+.social {
+	margin: 0 .5em;
+	white-space: nowrap
+}
+
+.wf-active .fa em {display: none}
+
+.social .fa {vertical-align: middle}
+
+/*! 12°) Media Queries
+	============ */
+
+@media only screen and (max-width:720px) {
+
+	body {overflow-y:visible}
+
+}
+
+/* Corrections pour les hauteurs d'ecrans reduites : diminution de la hauteur du 'Map' */
+@media only screen and (max-height: 516px) {
+
+
+	body {overflow-y:visible;min-height:528px}
+	.top-menu {font-size: 50%}
+	#recherche-lieu{right:1em;bottom:0}
+	#recherche-lieu.masked{position:relative;right:1em;bottom:-385px;/*bottom:-75vh;*/left:0}
+	#map {height: 430px}
+
+}
