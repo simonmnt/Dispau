@@ -1,0 +1,79 @@
+#tchat_annonce h1{
+	background: url(img/tchat2.png) no-repeat center right;
+	margin: 80px 40px;
+	height: 40px;
+}
+
+#messages_tchat {
+	min-height: 360px;
+	max-height: 360px;
+	overflow-y: auto;
+
+}
+
+
+#tchat_annonce .autre_user{
+	margin: 0px 20px;
+	background: url(img/profil2.png) no-repeat center left;
+	
+}
+
+#tchat_annonce .autre_user p{
+	min-height: 60px;
+	margin-left: 100px;
+	border: 1px solid blue;
+	border-radius: 15px;
+	padding: 5px;
+	background-color: cyan;
+	
+}
+
+#tchat_annonce .mon_message{
+	margin: 0px 20px;
+	background: url(img/profil1.png) no-repeat center right;
+	
+}
+
+
+#tchat_annonce .mon_message p{
+	min-height: 60px;
+	margin-right: 100px;
+	border: 1px solid blue;
+	border-radius: 15px;
+	padding: 5px;
+	background-color: greenyellow;
+	
+}
+
+#saisie {
+	margin: 30px;
+}
+
+#message-input{
+	display: inline-block;
+	vertical-align: middle;
+	width: 70%;
+}
+
+#valider-btn{
+	display: inline-block;
+	vertical-align: middle;
+	padding-left: 30px;
+	background: url(img/valider.png) no-repeat center center;
+ 	width: 50px;
+	height: 50px; 	
+}
+
+#valider-btn:hover{
+	display: inline-block;
+	vertical-align: middle;
+	padding-left: 30px;
+	border: 1px solid blue;
+	border-radius: 5px;
+	background: url(img/valider.png) no-repeat center center;
+ 	width: 50px;
+	height: 50px;
+	
+	
+  	
+}
