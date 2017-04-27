@@ -31,11 +31,12 @@ function Annonce()
 
 this.hydrate = function(obj)
 {
+	console.log("Annonce obj >", obj);
     for (var i in obj)
     {
-        ici[i]=obj[i];
+        this[i] = obj[i];
     }
-}
+};
 
 /* traite les demandes d'inscription ajoute l'utilisateur dans le tableau des inscrits, vérifie si il peut être inscrit,
     le met en liste d'attente si le nombre max est atteint
