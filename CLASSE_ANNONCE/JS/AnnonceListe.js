@@ -2,17 +2,15 @@ function AnnonceListe(){
     this.annonces_ar = {};
 
     /**
-     * Permet d'ajouter une un Objet annonce dans annonces
+     * Permet de créer un objet d'Annonce()
      * @param _annonce est un Objet d'annonce
      */
-    this.ajouterAnnonce = function (_annonce) {
-        var keys = Object.keys(_annonce);
+    this.ajouterAnnonce = function (_annonceObjet) {
+        var keys = Object.keys(_annonceObjet);
         for(var i = 0; i < keys.length; i++){
-            //console.log(_annonce[keys[i]]);
-            var annonce = _annonce[keys[i]];
+            var annonce = keys[i];
             var implAnnonce = new Annonce();
-            implAnnonce.hydrate(_annonce['annonce1']);
-            //console.log("Implementer annonce > ", implAnnonce.hydrate(_annonce[annonce]));
+            implAnnonce.hydrate(_annonceObjet[annonce]);
             this.annonces_ar[i] = implAnnonce;
         }
     };
