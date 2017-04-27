@@ -6,12 +6,6 @@ function AnnonceListe(){
      * @param _annonce est un Objet d'annonce
      */
     this.ajouterAnnonce = function (_annonce) {
-        /*console.log("_annonce ", _annonce.length);
-        for(var i = 0; i < _annonce.length; i++){
-            var id = _annonce[i].id_nb;
-            this.annonces_ar[id] = _annonce[i];
-        }*/
-        //console.log("_annonce ", _annonce)
         var keys = Object.keys(_annonce);
         for(var i = 0; i < keys.length; i++){
             //console.log(_annonce[keys[i]]);
