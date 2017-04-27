@@ -2,7 +2,7 @@ function AnnonceListe(){
     this.annonces_ar = {};
 
     /**
-     * Permet d'ajouter une un Objet annonce dans annonces
+     * Permet d'ajouter un Objet annonce dans annonces
      * @param _annonce est un Objet d'annonce
      */
     this.ajouterAnnonce = function (_annonce) {
