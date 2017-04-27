@@ -1,0 +1,44 @@
+#statistiques h1{
+	background: url(img/stat.png) no-repeat center right;
+	margin: 80px 40px;;
+}
+
+#logo_horaires{
+	display: inline-block;
+	background: url(img/date.png) no-repeat center center;
+	width: 70%;
+	height: 80px;
+}
+
+#logo_groupe{
+	display: inline-block;
+	background: url(img/groupe.png) no-repeat center center;
+	height: 80px;
+	width: 27%;
+}
+
+#liste_statistiques span{
+	display: inline-block;
+		
+}
+
+#liste_statistiques ul li{
+	list-style-image: url(img/puce.png);
+
+}
+
+#liste_statistiques .activite{
+	width: 20%;
+	text-align: center;
+	
+}
+
+#liste_statistiques .horaires{
+	width: 50%;
+	
+}
+#liste_statistiques .nb_participants{
+	width: 20%;
+	text-align: center;
+	
+}
