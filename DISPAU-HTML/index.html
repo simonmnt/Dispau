@@ -120,10 +120,10 @@ if(document.documentElement){document.documentElement.className+='js';}
 
       <nav class="top-menu">
         <ul>
-          <li><a href="#!" title="J'en suis !" data-cible="connexion" class="button btn-flat button-orange" id="connexionBtn">Connexion</a></li>
-          <li><a href="#!" title="Je veux découvrir DISPAU" data-cible="inscription" class="button btn-flat button-green" id="afficher-inscription-btn">Je m'inscris</a></li>
-          <li><a href="#!" title="Afficher mon profil" class="btn-flat btn-link" id="afficher-profil-btn">Mon profil</a></li>
-          <li><a href="#!" title="Aide d'utilisation" class="btn-flat btn-link" id="aide-btn">Aide</a></li>
+          <li><a href="#!" data-tooltip="" title="J'en suis !" data-cible="connexion" class="button btn-flat button-orange" id="connexionBtn">Connexion</a></li>
+          <li><a href="#!" data-tooltip="" title="Je veux découvrir DISPAU" data-cible="inscription" class="button btn-flat button-green" id="afficher-inscription-btn">Je m'inscris</a></li>
+          <li><a href="#!" data-tooltip="" title="Afficher mon profil" class="btn-flat btn-link" id="afficher-profil-btn">Mon profil</a></li>
+          <li><a href="#!" data-tooltip="" title="Aide d'utilisation" class="btn-flat btn-link" id="aide-btn">Aide</a></li>
         </ul>
       </nav>
 
@@ -274,6 +274,9 @@ window.jQuery || document.write('<script async src="js/vendor/jquery-1.12.0.min.
 <script async defer type="text/javascript">
 /*! Google Fonts loader */ 
 WebFontConfig={google:{families:[ 'Open+Sans::latin' ]}};(function(){var wf=document.createElement('script');wf.src=('https:'==document.location.protocol?'https':'http')+'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';wf.type='text/javascript';wf.async='true';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(wf,s); })();
+
+/*! Simple transfert for title contents into data-tooltip attributes by cara-tm.com, MIT license. */
+var dotooltips=function(){"use strict";if(document.querySelectorAll)for(var t=document.querySelectorAll("[data-tooltip]"),e=t.length;e-->0;){var o=t[e].getAttribute("title");t[e].setAttribute("aria-label",o);t[e].removeAttribute("title");}};dotooltips();
 
 /*!
  * @Source: https://www.taniarascia.com/google-maps-apis-for-multiple-locations/
