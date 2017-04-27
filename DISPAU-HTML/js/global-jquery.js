@@ -8,15 +8,16 @@
 
 jQuery(document).ready(function() {
 
-	// Ecouteur pour les fenetres modales
+	// Ecouteur sur tous les liens liés à l'ouverture des fenêtres modales
 	jQuery('a[href^=\\#').on('click', function(e) {
 		e.preventDefault();
-		if ( jQuery(this).equals('<a#recherche-lieu-fermer.close>') ) {
+		// Celle de recherche pour appliquer l'effet d'animation
+		if ( jQuery(this).hasClass('recherche-lieu') ) {
 			jQuery(this).parent('aside').toggleClass('masked');
 		} else {
-			var cible = $(this).attr('data-target');
-		console.log(cible);
-			jQuery('#'+cible).toggleClass('visible');
+			// ... Et toutes les autres
+			var cible = $(this).attr('data-cible');
+			(cible != null) ? jQuery('#'+cible).toggleClass('visible') : '';
 		}
 	});
 
