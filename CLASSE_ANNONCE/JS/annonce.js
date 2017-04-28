@@ -3,10 +3,10 @@ function Annonce()
 {
 	var ici=this;
 	this.id_nb; /*identifiant de l'annonce. Cle de la base de donnée*/
-	this.nom_st; /*nom de l'annonce*/
+	this.nom_str; /*nom de l'annonce*/
 	
 	this.photo_str; /*nomdu fichier qui contient la photo liée à l'annonce*/
-	this.description_srt; /* description de l'annonce en chaine de caractere sans attribut*/
+	this.description_str; /* description de l'annonce en chaine de caractere sans attribut*/
 	this.personnesMax_nb; /*nombre de personnes maximum*/
 	this.personnesMin_nb; /*nombre de personnes minimum*/
 	this.personnesInscrites_ar=[]; /*tableau de id users, liste des participants à l'annonce*/
@@ -31,11 +31,12 @@ function Annonce()
 
 this.hydrate = function(obj)
 {
+	console.log("Annonce obj >", obj);
     for (var i in obj)
     {
-        ici[i]=obj[i];
+        this[i] = obj[i];
     }
-}
+};
 
 /* traite les demandes d'inscription ajoute l'utilisateur dans le tableau des inscrits, vérifie si il peut être inscrit,
     le met en liste d'attente si le nombre max est atteint
@@ -54,72 +55,74 @@ this.hydrate = function(obj)
 
 this.inscrireUser =function(utilisateur)
 {
-var resultat;	
+var resultat;
+var idUser=utilisateur.id_nb;
 /* le test sur l'age requiert la classe utilisateur la ligne suivante est provisoire */
 if (utilisateur.age<ici.limiteAge_nb) 
 	{
-		var errAge= new Erreur;
-		errAge.code = 1005;
-		errAge.msg = "l'age limite n'est pas atteint"
-		return errAge;
+		var err05= new Erreur;
+		err05.code = 1005;
+		err05.msg = "l'age limite n'est pas atteint"
+		return err05;
 	}
 
 if (!ici.validite_bl)/* test si l'annonce n'est pas validée*/
 	{
-		var erreurAge= new Erreur;
-		errVal.code = 1009;
-		errVal.msg = 'annonce non validee'
-		return errVal;
+		var err09= new Erreur;
+		err09.code = 1009;
+		err09.msg = 'annonce non validee'
+		return err09;
 	} 
 
 if (ici.annulee_bl) /* test si l'annonce est annulée */
 	{
-		var errAnn= new Erreur;
-		errAnn.code = 1008;
-		errAnn.msg = 'annonce annulee'
-		return errAnn;
+		var err08= new Erreur;
+		err08.code = 1008;
+		err08.msg = 'annonce annulee'
+		return err08;
 	}
 
-if (ici.personnesBannies_ar.indexOf(iduser)>=0) /* test si l'utilisateur est bloqué*/
+if (ici.personnesBannies_ar.indexOf(idUser)>=0) /* test si l'utilisateur est bloqué*/
 	{
-		var errBlo= new Erreur;
-		errBlo.code = 1002;
-		errBlo.msg = 'utilisateur bloqué'
-		return errBlo;
+		var err02= new Erreur;
+		err02.code = 1002;
+		err02.msg = 'utilisateur bloqué'
+		return err02;
 	}
 
 if (Date.now()>ici.dateFinInscriptions_dat.getTime())/* test si la date d'inscription est dépassée */
 	{
-		var errDatI= new Erreur;
-		errDatI.code = 1004;
-		errDatI.msg = 'date inscription dépassée'
-		return errDatI;
+		var err04= new Erreur;
+		err04.code = 1004;
+		err04.msg = 'date inscription dépassée'
+		return err04;
 		
 	}
 
-if (ici.personnesInscrites_ar.indexOf(iduser)>=0)/* test si la personne est déjà inscrite */
+
+if (ici.personnesInscrites_ar.indexOf(idUser)>=0)/* test si la personne est déjà inscrite */
 	{
-		var errDej= new Erreur;
-		errDej.code = 1006;
-		errDej.msg = 'utilisateur deja inscrit'
-		return errDej;
+		var err06= new Erreur;
+		err06.code = 1006;
+		err06.msg = 'utilisateur deja inscrit'
+		return err06;
 	}
 
-if (ici.salleDAttente_ar.indexOf(iduser)>=0) /* test si la personne est déjà en liste d'attente */
+if (ici.salleDAttente_ar.indexOf(idUser)>=0) /* test si la personne est déjà en liste d'attente */
 	{
-		var errAtt= new Erreur;
-		errAtt.code = 1007;
-		errAtt.msg = 'utilisateur deja en liste d\'attente'
-		return errAtt;
+		var err07= new Erreur;
+		err07.code = 1007;
+		err07.msg = 'utilisateur deja en liste d\'attente'
+		return err07;
 	}
 if (ici.personnesInscrites_ar.length<ici.personnesMax_nb) /*si il reste au moins une place */
 	{
-		ici.personnesInscrites_ar.push(iduser);	
+		ici.personnesInscrites_ar.push(idUser);	
 		return 1;
 	}
 else 
 	{
-		ici.salleDAttente_ar.push(iduser)
+		ici.salleDAttente_ar.push(idUser)
 		
 		
 		return 	2;
@@ -137,7 +140,7 @@ if (ici.annulee_bl==true)
     {
         var err10= new Erreur;
 		err10.code = 1010;
-		err10.msg = 'utilisateur deja en liste d\'attente'
+		err10.msg = 'annonce deja annulee'
 		return err10;
 
     }
@@ -162,7 +165,7 @@ this.modifierNom=function(nom_str)
         var err10= new Erreur;
 		err10.code = 1011;
 		err10.msg = 'le nom entré est nul'
-		return errNom;
+		return err10;
         }
     else
         {
@@ -182,10 +185,10 @@ this.modifierPhoto=function(photo_str)
 {
     if (photo_str =='')
         {
-            var errPho= new Erreur;
-		errPho.code = 1012;
-		errPho.msg = 'le nom entré est nul'
-		return errPho;
+            var err12= new Erreur;
+		err12.code = 1012;
+		err12.msg = 'le nom de fichier photo entre\' est nul'
+		return err12;
         }
     else
         {
@@ -203,10 +206,10 @@ this.modifierDescription=function(description_str)
 {
 if (description_str =='')
         {
-        var errDes= new Erreur;
-		errDes.code = 1013;
-		errDes.msg = 'le nom entré est nul'
-		return errDes;return false;
+        var err13= new Erreur;
+		err13.code = 1013;
+		err13.msg = 'le nom de description entre\' est nul';
+		return err13;
         }
     else
         {
@@ -228,12 +231,13 @@ if (idLieu_nb == ici.lieu_nb)
     {
         var err14= new Erreur;
 		err14.code = 1014;
-		err14.msg = 'le meme lieu a ete entre'
+		err14.msg = 'le meme lieu a ete entre\''
 		return err14;
     }
 else
     {
         ici.lieu_nb = idLieu_nb;
+        return idLieu_nb;
     }
 }
 
