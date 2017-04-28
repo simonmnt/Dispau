@@ -29,6 +29,13 @@ function Profil(_pseudo_str, _email_str, _pass_str) {
     }
 }
 
+function Delete(id_nb){
+    if(id_nb && this.dateInscription_date && this.pass_str == null){
+        setTimeout(function(){
+            delete listUtilisateurs[id_nb];
+        }, 400000000000);
+    }
+}
 /**
  * Utilisateur
  * @class
@@ -146,7 +153,7 @@ function ListUtilisateurs(_pseudo_str, _email_str, _pass_str)
     }
          
     var hydrateUtilisateurs = function(dbv) {
-        for (var k in ) {
+        for(var k in objet ) {
         listUtilisateurs.hydrate(ListUtilisateurs);
         }
     }
