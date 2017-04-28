@@ -24,39 +24,39 @@
       <div id="icon-section"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></div>
       <div id="page-form">
         <h1>Créer votre profil</h1>
-        <form action="" method="post">
+        <form>
           <div class="form-group">
             <label for="formGroupExampleInput">Votre pseudo</label>
-            <input type="password" class="form-control" id="formGroupExampleInput" placeholder="jojo64">
+            <input type="text" class="form-control" id="form-pseudo-input" placeholder="jojo64">
           </div>
           <div class="form-group">
             <label for="formGroupExampleInput2">Choisissez un password</label>
-            <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="password">
+            <input type="password" class="form-control" id="form-password-input" placeholder="password">
           </div>
           <div class="form-group">
             <label for="formGroupExampleInput2">Confirmez votre password</label>
-            <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="password">
+            <input type="password" class="form-control" id="form-password-check-input" placeholder="password">
           </div>
           <div class="form-group">
             <label for="formGroupExampleInput">Votre nom</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Simin Pallay">
+            <input type="text" class="form-control" id="form-nom-input" placeholder="Simin Pallay">
           </div>
           <div class="form-group">
             <label for="formGroupExampleInput">Votre email</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="s.pallay@yahoo.fr">
+            <input type="text" class="form-control" id="form-email-input" placeholder="s.pallay@yahoo.fr">
           </div>
           <div class="form-group">
             <label for="formGroupExampleInput">Confirmez votre email</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="s.pallay@yahoo.fr">
+            <input type="text" class="form-control" id="form-email-check-input" placeholder="s.pallay@yahoo.fr">
           </div>
           <div class="form-group">
             <label for="exampleInputFile">Image de profil</label>
-            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+            <input type="file" class="form-control-file" id="form-file-input" aria-describedby="fileHelp">
             <small id="fileHelp" class="form-text text-muted">Lorem ipsum</small>
           </div>
-          <button type="submit" class="btn btn-primary" id="btn-user-send">Envoyer</button>
+          <button type="submit" class="btn btn-primary" id="form-btn-user-send">Envoyer</button>
           <!-- Cancel button -->
-          <button type="button" class="btn btn-default">Annuler</button>
+          <button type="button" class="btn btn-default" id="form-btn-user-cancel">Annuler</button>
         </form>
       </div>
 
@@ -84,7 +84,7 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/dispo.js"></script>
-    <script src="js/user-traitement.js"> </script>
+    <script src="js/form-traitement.js"></script>
     <script src="js/user.js"> </script>
   </body>
 </html>
