@@ -1,2 +1,15 @@
 /* profil-creation.css */
 
+.form-control {
+    height: 28px;
+}
+
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 2px;
+    font-weight: 400;
+}
+#page-form form .form-group {
+    margin-bottom: 12px;
+}
