@@ -1,5 +1,10 @@
 function AnnonceListe(){
-    this.annonces_ar = {};
+    /**
+     * Variable possédant toutes les annonces
+     * Il est intéressant de l'utiliser pour trier tout les objets
+     * @type {{}}
+     */
+    var annonces_obj = {};
 
     /**
      * Permet d'ajouter une un Objet annonce dans annonces
@@ -13,6 +18,18 @@ function AnnonceListe(){
         }
     };
 
+    /**
+     * propriété qui permet de remplir la variable annonces_obj
+     * @param liste_annonces_json est le fichier json récupéré depuis le model
+     */
+    this.hydrate = function(liste_annonces_json){
+        for(var i in liste_annonces_json){
+            this.tmp = new Annonce();
+            tmp.hydrate(data[i]);
+            annonces_obj[i] = tmp;
+        }
+
+    }
     /*this.annoncesLieu = function (_lieu) {
         var lieu = _lieu.lieu_lie;
         this.annonces_ar[lieu];
@@ -48,6 +65,20 @@ function AnnonceListe(){
 
         else console.log("L'annonce n'existe pas")
     }*/
+
+    function tri (a, b) {
+        return a - b;
+    }
+
+    this.annoncesCentresInterets = function (annonces_obj) {
+        annonces_obj.sort(function (a, b) {
+            return a.centresInterets_ar-b.centresInterets_ar;
+        });
+        var tabAnnonceTrieParCentreInteret = function triParCentreInteret(key1, key2) {
+            return key1.lieu_lie < key2.lieu_lie;
+        };
+
+    }
 }
 
 var annonce1 = {
@@ -103,3 +134,10 @@ var annonce3 = {
         'banis_ar': [],
         'validee_bl': false
 };
+
+
+var json = $.getJSON("./annonces.json", function (data) {
+    annonceslistes_anl = new AnnoncesListe();
+    annoncesliste_anl.annoncesLieu(data);
+
+});

@@ -22,27 +22,31 @@ function Annonce() {
 
     }
 
-}
-var tableauAnnonceTrie_tab = [];
-// Le lien du fichier json doit être considéré depuis la page web et non depuis ce javascript
-    $.getJSON("./js/annonces.json",function (data) {
 
-    for (var i in data) {
-        var temp = new Annonce();
-        temp.nom_str = data[i].nom_str;
-        temp.description_str = data[i].description_str;
-        temp.dateDebut_str = data[i].dateDebut_str;
-        temp.dateFin_str = data[i].dateFin_str;
-        temp.lieu_lie = data[i].lieu_lie;
-        temp.placesMin_nb = data[i].placesMin_nb;
-        temp.placesMax_nb = data[i].placesMax_nb;
-        temp.image_Img = data[i].image_Img;
-        temp.participants_ar = data[i].participants_ar;
-        tableauAnnonceTrie_tab.push(temp);
-    }
+    this.trieDesAnnonces = function () {
+        // Le lien du fichier json doit être considéré depuis la page web et non depuis ce javascript
+        var tableauAnnonceTrie_tab = [];
+        $.getJSON("./js/annonces.json", function (data) {
+
+            for (var i in data) {
+                var temp = new Annonce();
+                temp.nom_str = data[i].nom_str;
+                temp.description_str = data[i].description_str;
+                temp.dateDebut_str = data[i].dateDebut_str;
+                temp.dateFin_str = data[i].dateFin_str;
+                temp.lieu_lie = data[i].lieu_lie;
+                temp.placesMin_nb = data[i].placesMin_nb;
+                temp.placesMax_nb = data[i].placesMax_nb;
+                temp.image_Img = data[i].image_Img;
+                temp.participants_ar = data[i].participants_ar;
+                tableauAnnonceTrie_tab.push(temp);
+            }
+
+        });
+
         console.log(tableauAnnonceTrie_tab);
-    // Tu peux appeler une fonction pour afficher les lieux
-
-})
-
+        // Tu peux appeler une fonction pour afficher les lieux
+        return tableauAnnonceTrie_tab;
+    }
+}
 
