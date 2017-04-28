@@ -2,10 +2,12 @@
 
 $(document).ready(function() {
 
+	// form-btn-user-send action
 	$('#form-btn-user-send').click(function(event) {
 	  event.preventDefault();
 	  recupFormData();
 	});
+
 
 	function recupFormData()
 	{
