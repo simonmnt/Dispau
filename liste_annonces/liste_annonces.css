@@ -1,0 +1,30 @@
+#annonces{
+	background-color: red;
+  width: 452px;
+	height: 550px;
+}
+
+.btn {
+	position: absolute;
+	z-index: 5;
+	background-color: rgba(0,0,0,0);
+	border: 0px;
+
+}
+
+.fa{
+	font-size: 4em;
+	color: rgba(0,0,255,0.3);
+}
+
+#gauche-btn{
+	left: 40px;
+	top: 300px;
+	
+}
+
+#droite-btn{
+	right: 40px;
+	top: 300px;
+	
+}
