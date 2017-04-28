@@ -8,8 +8,12 @@ function AnnonceListeElement() {
 
             //Permet de créer le DOM d'affichage de l'annonce.
             var annonceID = document.getElementById('annonce');
+            var divAnnonce = document.createElement('div');
+
             var nom, description, dateDebut, dateFin, dateCreation, lieu, centreInteret, placesMin, placesMax, image,
                 particpants;
+
+
 
             image = document.createElement('img');
             image.setAttribute('src', el.photo_str);
@@ -54,6 +58,7 @@ function AnnonceListeElement() {
             var ulParticipants;
             ulParticipants = document.createElement('ul');
 
+            //Test si les il y a des participants dans le tableau
             if (el.participants_ar.length < 0) {
                 for (var i = 0; i < el.centresInterets_ar.length; i++) {
                     particpants = document.createElement('li');
@@ -68,18 +73,19 @@ function AnnonceListeElement() {
                 ulParticipants.appendChild(particpants);
             }
 
-            annonceID.appendChild(image);
-            annonceID.appendChild(nom);
-            annonceID.appendChild(description);
-            annonceID.appendChild(dateDebut);
-            annonceID.appendChild(dateFin);
-            annonceID.appendChild(dateCreation);
-            annonceID.appendChild(dateFinInscription)
-            annonceID.appendChild(lieu);
-            annonceID.appendChild(ulCentreInteret);
-            annonceID.appendChild(placesMin);
-            annonceID.appendChild(placesMax);
-            annonceID.appendChild(ulParticipants);
+            divAnnonce.appendChild(image);
+            divAnnonce.appendChild(nom);
+            divAnnonce.appendChild(description);
+            divAnnonce.appendChild(dateDebut);
+            divAnnonce.appendChild(dateFin);
+            divAnnonce.appendChild(dateCreation);
+            divAnnonce.appendChild(dateFinInscription)
+            divAnnonce.appendChild(lieu);
+            divAnnonce.appendChild(ulCentreInteret);
+            divAnnonce.appendChild(placesMin);
+            divAnnonce.appendChild(placesMax);
+            divAnnonce.appendChild(ulParticipants);
+            annonceID.appendChild(divAnnonce);
         });
     }
 }
