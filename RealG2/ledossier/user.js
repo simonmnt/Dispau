@@ -45,7 +45,6 @@ function Utilisateur(_pseudo_str, _email_str, _pass_str) {
     this.demandesAmis_obj = {};
     this.notificationsRecues_arr = [];
     this.abonnementsLieux_arr = [];
-
     /**
      * demanderAmi
      * @function
@@ -118,20 +117,47 @@ function Administrateur(_pseudo_str, _email_str, _pass_str) {
 	Gestionnaire.call(this, _pseudo_str, _email_str, _pass_str);
 }
 
+/*
+* 
+* @function
+*
+*/
+
+// Creer une Class liste d'utilisateur
+var listUtilisateurs = {};
+
+function ListUtilisateurs(_pseudo_str, _email_str, _pass_str)
+{
+    if(_pseudo_str && _email_str && _pass_str){
+        var _pseudo_str = new Profil(_pseudo_str, _email_str, _pass_str);
+        return _pseudo_str;
+    }
+    if(abonnementsLieux_arr){
+        var _pseudo_str = new Utilisateur(_pseudo_str, _email_str, _pass_str);
+        return _pseudo_str;
+    }
+    if(annoncesGerees_arr){
+        var _pseudo_str = new Gestionnaire(_pseudo_str, _email_str, _pass_str);
+        return _pseudo_str;
+    }
+    if(lieuxAdministres_ar){
+        var _pseudo_str = new Administrateur(_pseudo_str, _email_str, _pass_str);
+        return _pseudo_str;
+    }
+         
+    var hydrateUtilisateurs = function(dbv) {
+        for (var k in ) {
+        listUtilisateurs.hydrate(ListUtilisateurs);
+        }
+    }
+
+}
+listUtilisateurs.push(ListUtilisateurs()); 
+
 
 /*--------------------------------------
     code en cours
 -------------------------------------- */
-
-var listUtilisateur = [];
-var rempli = function(dbv) {
-    for (var k in dbv) {
-        var utilisateur = new Utilisateur();
-        utilisateur.mouille(k);
-        listUtilisateur.push(utilisateur);
-    }
-}
-
 /**
  * DemanderAmi
  * @class
