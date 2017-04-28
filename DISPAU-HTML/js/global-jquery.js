@@ -2,7 +2,7 @@
 * script jQuery pour le front DISPAU version web
 *
 * @date 21/04/2017
-* @revision 24/04/2017
+* @revision 28/04/2017
 * @authors Patrick ; 
 */
 
@@ -26,6 +26,12 @@ jQuery(document).ready(function() {
 		e.preventDefault();
 		// Bascule la classe 'visible' des elements div proche du lien
 		jQuery(this).closest('div').toggleClass('visible');
+	});
+	
+	// Créé des info-bulles stylées sur les liens comportant la classe de préfixe 'tooltip'
+	jQuery('a[class*=tooltip]').each(function() {
+		jQuery(this).attr('data-tooltip', jQuery(this).attr('title'));
+		jQuery(this).removeAttr('title');
 	});
 
 }); // End ready
