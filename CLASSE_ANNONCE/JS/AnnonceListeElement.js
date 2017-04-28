@@ -31,11 +31,18 @@ function AnnonceListeElement() {
         }
     };
 
+    this.afficherAnnonces = function () {
+      this.annonces_ar.forEach(function (el) {
+          console.log(el.id_nb);
+      })
+    };
+
+
     /**
      * Permet d'afficher une annonce par rapport à son ID.
      * @param _annonceID ID de l'annonce
      */
-    this.afficherAnnonce = function (_annonceID) {
+    /*this.afficherAnnonce = function (_annonceID) {
         if(_annonceID in this.annonces_ar) {
             for (var i in this.annonces_ar[_annonceID]) {
                 var annonce = this.annonces_ar[_annonceID];
@@ -121,7 +128,7 @@ function AnnonceListeElement() {
 
         }
         else console.log("L'annonce n'existe pas")
-    }
+    }*/
     //console.log(AnnonceListe.call(this));
 }
 

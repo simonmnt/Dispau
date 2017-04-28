@@ -1,5 +1,5 @@
 function AnnonceListe(){
-    this.annonces_ar = {};
+    this.annonces_ar = [];
 
     /**
      * Permet de créer un objet d'Annonce()
